@@ -2,7 +2,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
-export const WEB_APP_URL = 'https://k-web-application.onrender.com/';
+export const WEB_APP_URL = 'https://k-nexus-app.onrender.com/';
 export const money = (value, digits = 0) => new Intl.NumberFormat('th-TH', {
   minimumFractionDigits: digits,
   maximumFractionDigits: digits

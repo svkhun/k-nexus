@@ -3,7 +3,7 @@
 > **KBTG KAMPUS HACKATHON 2026 | TRACK 2: DATA SCIENCE & INTELLIGENCE**  
 > *Frictionless Cashflow & Target-Specific Fraud Defense for K PLUS First Jobbers (Aged 22–30)*
 
-[![Live Web Prototype](https://img.shields.io/badge/Render-Live_Web_Prototype-00C7B7?style=for-the-badge&logo=render&logoColor=white)](https://k-web-application.onrender.com)
+[![Live Web Prototype](https://img.shields.io/badge/Render-Live_Web_Prototype-00C7B7?style=for-the-badge&logo=render&logoColor=white)](https://k-nexus-app.onrender.com)
 [![Showcase Portal](https://img.shields.io/badge/Render-Showcase_Portal-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://k-nexus-showcase.onrender.com)
 [![FastAPI](https://img.shields.io/badge/FastAPI-4.0.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
@@ -19,8 +19,8 @@
 2. **Targeted Social Engineering & Mule Account Scams:** Pre-transfer fraud interdiction that protects users against scams (e.g., fraudulent task scams, fake investments, urgent transfer pressure) through pre-transfer cashflow preview, explainable AI (XAI) risk reasoning, and adaptive risk verification.
 
 ### Live Deployments
-- **Interactive Web Prototype (Full K+ Experience):** [https://k-web-application.onrender.com](https://k-web-application.onrender.com)
-  - *API Health Check:* [https://k-web-application.onrender.com/api/v2/health](https://k-web-application.onrender.com/api/v2/health)
+- **Interactive Web Prototype (Full K+ Experience):** [https://k-nexus-app.onrender.com](https://k-nexus-app.onrender.com)
+  - *API Health Check:* [https://k-nexus-app.onrender.com/api/v2/health](https://k-nexus-app.onrender.com/api/v2/health)
 - **Showcase & Research Portal (Project Showcase & Dataset Lab):** [https://k-nexus-showcase.onrender.com](https://k-nexus-showcase.onrender.com)
   - *API Health Check:* [https://k-nexus-showcase.onrender.com/api/v2/health](https://k-nexus-showcase.onrender.com/api/v2/health)
 
