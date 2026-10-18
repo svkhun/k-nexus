@@ -16,12 +16,12 @@ export function LanguageProvider({ children }) {
   useLayoutEffect(() => {
     document.documentElement.lang = language;
     document.title = language === 'th'
-      ? 'FlowSense × TrustGraph | แนวคิดและการทำงานของแอปต้นแบบ'
-      : 'FlowSense × TrustGraph | Prototype concept and implementation';
+      ? 'K-NEXUS | แนวคิดและการทำงานของแอปต้นแบบ'
+      : 'K-NEXUS | Prototype concept and implementation';
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = language === 'th'
-      ? 'แนวคิด ข้อมูล และการทำงานของ FlowSense × TrustGraph: แอปต้นแบบสำหรับวางแผนใช้เงิน ออมเงิน และตรวจความเสี่ยงก่อนโอน'
-      : 'Explore the concept, data, and implementation of FlowSense × TrustGraph: a prototype for spending plans, savings, and pre-transfer risk review.';
+      ? 'K-NEXUS: แอปต้นแบบที่รวม FlowSense และ TrustGraph สำหรับวางแผนใช้เงิน ออมเงิน และตรวจความเสี่ยงก่อนโอน'
+      : 'Explore K-NEXUS, a prototype combining FlowSense and TrustGraph for spending plans, savings, and pre-transfer risk review.';
   }, [language]);
   return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>;
 }

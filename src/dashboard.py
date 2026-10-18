@@ -20,7 +20,7 @@ from fastapi.testclient import TestClient
 # 0. PAGE CONFIGURATION & IN-PROCESS API CLIENT
 # ==============================================================================
 st.set_page_config(
-    page_title="FlowSense & TrustGraph | K PLUS Enterprise Platform",
+    page_title="K-NEXUS | แอปต้นแบบ",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -228,7 +228,7 @@ st.markdown("""
 # ==============================================================================
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Kasikornbank_logo.svg/320px-Kasikornbank_logo.svg.png", width=180)
-    st.markdown("### **FlowSense & TrustGraph**")
+    st.markdown("### **K-NEXUS**")
     st.caption("KBTG Kampus Hackathon 2026 — Track 2")
 
     nav_selection = st.radio(

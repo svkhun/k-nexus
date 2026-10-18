@@ -23,7 +23,7 @@ export default function App() {
     <a href="#main-content" className="skip-link">{t("ข้ามไปเนื้อหา")}</a>
     <ScrollToTop /><Navbar />
     <div className="project-body">
-      <header className="project-topbar"><span>FlowSense <span className="muted">×</span> TrustGraph</span><div className="topbar-actions"><span className="prototype-label">{t("เว็บไซต์นำเสนอ · แอปต้นแบบ")}</span><LanguageSettings /></div></header>
+      <header className="project-topbar"><span>K-NEXUS</span><div className="topbar-actions"><span className="prototype-label">{t("เว็บไซต์นำเสนอ · แอปต้นแบบ")}</span><LanguageSettings /></div></header>
       <main id="main-content" className="page-content" tabIndex={-1}>
         <PageEffects><Routes>
           <Route path="/" element={<HomePage />} />

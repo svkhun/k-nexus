@@ -65,7 +65,7 @@ def open_browser(url):
 
 if __name__ == "__main__":
     print("==================================================================")
-    print("  FlowSense & TrustGraph | K PLUS Enterprise Platform")
+    print("  K-NEXUS | FlowSense & TrustGraph")
     print("  KBTG Kampus Hackathon 2026 — Track 2: Data Science & Intelligence")
     print("==================================================================")
     

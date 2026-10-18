@@ -10,7 +10,7 @@ from src.app_v2 import app
 
 def run_benchmark():
     print("==========================================================")
-    print("  FlowSense & TrustGraph Two-Tier Low-Latency Benchmark   ")
+    print("  K-NEXUS Two-Tier Low-Latency Benchmark   ")
     print("  Track 2: Data Science & Intelligence (Target: < 80ms)  ")
     print("==========================================================")
 

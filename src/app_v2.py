@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
 app = FastAPI(
-    title="FlowSense & TrustGraph (Industrial Banking Engine)",
+    title="K-NEXUS API (FlowSense & TrustGraph)",
     description="Backend API powering FlowSense Flexible Liquidity & Optional Saving, and TrustGraph Targeted Anti-Scam Verification for K PLUS First Jobbers",
     version="3.0.0"
 )
@@ -66,7 +66,8 @@ else:
         "http://trustgraph.local",
         "http://k-sentinel.local",
         "http://wealthpilot.local",
-        "https://k-flowsense-trustgraph.onrender.com"
+        "https://k-flowsense-trustgraph.onrender.com",
+        "https://k-nexus-showcase.onrender.com"
     ]
     allow_credentials = True
 
@@ -182,7 +183,7 @@ def mask_account_id(acc_id: Optional[str]) -> str:
 def audit_log(event_type: str, actor: str, details: Dict[str, Any]):
     record = {
         "audit_timestamp": datetime.now().isoformat(),
-        "service": "k-flowsense-trustgraph",
+        "service": "k-nexus",
         "event_type": event_type,
         "actor_masked": mask_account_id(actor),
         "details": details
@@ -1358,7 +1359,7 @@ def get_live_transaction_stream(count: int = Query(15, ge=5, le=50)):
 def health_check():
     return {
         "status": "HEALTHY",
-        "service": "FlowSense & TrustGraph Production Engine",
+        "service": "K-NEXUS Prototype Engine",
         "version": "3.0.0",
         "security_framework": "KBTG-Enterprise-CAR-Hardened",
         "model_integrity_verified": True,

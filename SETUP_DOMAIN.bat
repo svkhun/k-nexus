@@ -1,5 +1,5 @@
 @echo off
-title "Setup Local Domain for FlowSense & TrustGraph"
+title "Setup Local Domain for K-NEXUS"
 echo ====================================================================
 echo   Configuring Local Domain Names:
 echo   - http://flowsense.local/

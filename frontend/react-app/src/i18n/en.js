@@ -10,7 +10,7 @@ export default {
   "ข้อมูลและการประเมิน": "Data & evaluation",
   "ปิดเมนู": "Close menu",
   "เปิดเมนู": "Open menu",
-  "FlowSense × TrustGraph ภาพรวมโครงการ": "FlowSense × TrustGraph project overview",
+  "K-NEXUS ภาพรวมโครงการ": "K-NEXUS project overview",
   "เมนูโครงการ": "Project navigation",
   "ลองดูจากหน้าจอจริง": "Explore the working prototype",
   "โครงการต้นแบบสำหรับ KBTG": "Prototype project for KBTG",

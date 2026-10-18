@@ -1,10 +1,10 @@
-# FlowSense & TrustGraph: Frictionless Cashflow & Target-Specific Fraud Defense for K PLUS
+# K-NEXUS — FlowSense & TrustGraph
 
 > **KBTG KAMPUS HACKATHON 2026 | TRACK 2: DATA SCIENCE & INTELLIGENCE**  
 > *Frictionless Cashflow & Target-Specific Fraud Defense for K PLUS First Jobbers (Aged 22–30)*
 
 [![Live Web Prototype](https://img.shields.io/badge/Render-Live_Web_Prototype-00C7B7?style=for-the-badge&logo=render&logoColor=white)](https://k-web-application.onrender.com)
-[![Showcase Portal](https://img.shields.io/badge/Render-Showcase_Portal-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://k-flowsense-trustgraph.onrender.com)
+[![Showcase Portal](https://img.shields.io/badge/Render-Showcase_Portal-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://k-nexus-showcase.onrender.com)
 [![FastAPI](https://img.shields.io/badge/FastAPI-4.0.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![ONNX Runtime](https://img.shields.io/badge/ONNX_Runtime-1.30-005CED?style=for-the-badge&logo=onnx&logoColor=white)](https://onnxruntime.ai)
@@ -14,15 +14,15 @@
 
 ## 1. Executive Summary & Live Endpoints
 
-**FlowSense & TrustGraph** is an independent, next-generation financial intelligence prototype tailored for modern mobile banking experiences (inspired by K+ / MAKE by KBank). It directly addresses the dual challenges faced by young Thai professionals (**First Jobbers, aged 22–30**):
+**K-NEXUS** is an independent financial intelligence prototype combining **FlowSense** (money planning and saving) and **TrustGraph** (pre-transfer risk review). It addresses two challenges faced by young Thai professionals (**First Jobbers, aged 22–30**):
 1. **Discretionary Spending Trap & Liquidity Friction:** Managing month-to-month cashflow, anticipating fixed commitments (rent, bills, debt), building an emergency reserve, and saving surplus effortlessly without tedious spreadsheets or fear of locking away funds.
 2. **Targeted Social Engineering & Mule Account Scams:** Pre-transfer fraud interdiction that protects users against scams (e.g., fraudulent task scams, fake investments, urgent transfer pressure) through pre-transfer cashflow preview, explainable AI (XAI) risk reasoning, and adaptive risk verification.
 
 ### Live Deployments
 - **Interactive Web Prototype (Full K+ Experience):** [https://k-web-application.onrender.com](https://k-web-application.onrender.com)
   - *API Health Check:* [https://k-web-application.onrender.com/api/v2/health](https://k-web-application.onrender.com/api/v2/health)
-- **Showcase & Research Portal (Project Showcase & Dataset Lab):** [https://k-flowsense-trustgraph.onrender.com](https://k-flowsense-trustgraph.onrender.com)
-  - *API Health Check:* [https://k-flowsense-trustgraph.onrender.com/api/v2/health](https://k-flowsense-trustgraph.onrender.com/api/v2/health)
+- **Showcase & Research Portal (Project Showcase & Dataset Lab):** [https://k-nexus-showcase.onrender.com](https://k-nexus-showcase.onrender.com)
+  - *API Health Check:* [https://k-nexus-showcase.onrender.com/api/v2/health](https://k-nexus-showcase.onrender.com/api/v2/health)
 
 ---
 

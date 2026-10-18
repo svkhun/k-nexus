@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Search, Download, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { datasetAnalyticsData } from '../data/datasetAnalyticsData';
 import { PageIntro, Note, SectionHeading, money } from '../components/ProjectUI';
-const sourceRoot = 'https://github.com/svkhun/k-flowsense-trustgraph/blob/main/data/';
+const sourceRoot = 'https://github.com/svkhun/k-nexus/blob/main/data/';
 const {
   accounts,
   transactions

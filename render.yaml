@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: k-flowsense-trustgraph
+    name: k-nexus-showcase
     runtime: python
     plan: free
     region: singapore

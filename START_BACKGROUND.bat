@@ -1,9 +1,9 @@
 @echo off
-title "FlowSense & TrustGraph Background Launcher"
+title "K-NEXUS Background Launcher"
 cd /d "%~dp0"
 
 echo ========================================================
-echo   FlowSense ^& TrustGraph - Background Service Runner
+echo   K-NEXUS - Background Service Runner
 echo ========================================================
 echo.
 

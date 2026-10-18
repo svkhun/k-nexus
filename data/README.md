@@ -1,5 +1,5 @@
 # 📁 สรุปโครงสร้างและคำอธิบายชุดข้อมูล (Dataset Dictionary)
-**โครงการ: FlowSense & TrustGraph (K PLUS Enterprise Platform)**
+**โครงการ: K-NEXUS (โมดูล FlowSense และ TrustGraph)**
 
 โฟลเดอร์นี้จัดเก็บชุดข้อมูลจำลอง (Synthetic Datasets) ทั้งหมด 5 ไฟล์ โดยแบ่งออกเป็น 2 ระบบหลัก:
 

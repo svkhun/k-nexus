@@ -1,5 +1,5 @@
 @echo off
-title Install Auto-Startup (FlowSense & TrustGraph)
+title Install Auto-Startup (K-NEXUS)
 echo =================================================================
 echo   Configuring Automatic Windows Startup for Backend Engine
 echo =================================================================
