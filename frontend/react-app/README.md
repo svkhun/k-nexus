@@ -1,6 +1,6 @@
 # K-NEXUS — เว็บไซต์นำเสนอโครงการ
 
-เว็บไซต์ React สำหรับอธิบายแนวคิด การทำงาน และขอบเขตของต้นแบบ K-NEXUS ซึ่งประกอบด้วยโมดูล FlowSense และ TrustGraph ใช้สี ฟอนต์ และรูปแบบเมนูจาก `k-web-application/src/ui/banking.css` ได้แก่พื้น #f4f7f5, สีหลัก #087653, เมนู #123f32, IBM Plex Sans Thai และ Plus Jakarta Sans สำหรับตัวเลข
+เว็บไซต์ React สำหรับอธิบายแนวคิด การทำงาน และขอบเขตของต้นแบบ K-NEXUS ซึ่งประกอบด้วยโมดูล FlowSense และ TrustGraph ใช้สี ฟอนต์ และรูปแบบเมนูจาก `K-NEXUS-Web/src/ui/banking.css` ได้แก่พื้น #f4f7f5, สีหลัก #087653, เมนู #123f32, IBM Plex Sans Thai และ Plus Jakarta Sans สำหรับตัวเลข
 
 เว็บแอปที่ใช้ทดลองขั้นตอนเต็มเปิดแยกที่ https://k-nexus-app.onrender.com/ โดยกำหนด URL ใน `src/components/ProjectUI.jsx`
 

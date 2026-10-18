@@ -17,6 +17,6 @@ export default function HomePage() {
       <article className="feature-story"><span className="story-number">02</span><div className="story-question"><span className="icon-box lilac"><ShieldCheck size={22} /></span><h3>{t("“ก่อนกดโอน")}<br />{' '}{t("มีอะไรที่ควรรู้?”")}</h3></div><div className="story-answer"><span className="module-name">{t("TrustGraph · ตรวจความเสี่ยงก่อนโอน")}</span><p>{t("ตรวจข้อมูลผู้รับและรูปแบบธุรกรรม แล้วแสดงเหตุผลเมื่อรายการน่าสงสัย ในเว็บแอปมีขั้นตอนทบทวนรายการเสี่ยงและบล็อกผู้รับที่ถูกระบุไว้ในข้อมูลทดลอง")}</p><TextLink to="/trustgraph">{t("ดูตัวอย่างการเตือนก่อนโอน")}</TextLink></div></article>
     </section>
     <section className="reading-strip"><div><span className="section-kicker">{t("สำหรับคนที่อยากดูเบื้องหลัง")}</span><h2>{t("ดูให้ถึงข้อมูลที่ใช้ และสิ่งที่ยังต้องทดสอบ")}</h2><p>{t("มีโมเดลและ API ในต้นแบบ ส่วนผลจากข้อมูลสมมติยังใช้ยืนยันผลกับลูกค้าจริงไม่ได้")}</p></div><TextLink to="/dataset">{t("สำรวจข้อมูลและข้อจำกัด")}</TextLink></section>
-    <Note>{t("เว็บไซต์นี้อธิบายโครงการและมีตัวอย่างคำนวณในเบราว์เซอร์ ส่วนปุ่ม “เปิดเว็บแอป” จะพาไปยังแอปต้นแบบในโปรเจกต์ k-web-application ซึ่งมีขั้นตอนใช้งานครบกว่า")}</Note>
+    <Note>{t("เว็บไซต์นี้อธิบายโครงการและมีตัวอย่างคำนวณในเบราว์เซอร์ ส่วนปุ่ม “เปิดเว็บแอป” จะพาไปยังแอปต้นแบบในโปรเจกต์ K-NEXUS-Web ซึ่งมีขั้นตอนใช้งานครบกว่า")}</Note>
   </div>;
 }
