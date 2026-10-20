@@ -16,8 +16,8 @@ export function LanguageProvider({ children }) {
   useLayoutEffect(() => {
     document.documentElement.lang = language;
     document.title = language === 'th'
-      ? 'K-NEXUS | แนวคิดและการทำงานของแอปต้นแบบ'
-      : 'K-NEXUS | Prototype concept and implementation';
+      ? 'K-NEXUS Showcase | แผนเงินและดูแลก่อนโอน'
+      : 'K-NEXUS Showcase | Spending plans & transfer review';
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = language === 'th'
       ? 'K-NEXUS: แอปต้นแบบที่รวม FlowSense และ TrustGraph สำหรับวางแผนใช้เงิน ออมเงิน และตรวจความเสี่ยงก่อนโอน'

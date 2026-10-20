@@ -42,11 +42,11 @@ export default function MicroSweepVault({
     setError(false);
     setMessage({ key: 'ถอนเงินสมมติ ฿{amount} กลับบัญชีหลักแล้ว', params: { amount: money(amount, 2) } });
   };
-  return <section className="surface panel" aria-labelledby="savings-title">
+  return <section id="savings-example" className="surface panel" aria-labelledby="savings-title" tabIndex={-1}>
     <div className="surface-title"><div><h2 id="savings-title">{t("ออมเงินและถอนเงิน")}</h2><p>{t("ยอดเชื่อมกับแผนใช้เงินในหน้านี้")}</p></div><span className="icon-box peach"><Wallet size={21} /></span></div>
     <div className="balance-summary"><div><span>{t("เงินออมในบัญชีทดลอง")}</span><strong>฿{money(subAccountBalance, 2)}</strong></div></div>
     <span className="field-label">{t("เงินส่วนที่พร้อมออมในตัวอย่าง")}</span><h3 className="number">฿{money(capacity, 2)}</h3><p className="small-note">{t("หักบิล งบรายวันตลอด 14 วัน และเงินสำรอง ฿")}{money(emergencyBuffer)}{t(" จากบัญชีหลักแล้ว")}</p>
-    <label className="check-label"><input type="checkbox" checked={enabled} onChange={event => setEnabled(event.target.checked)} />{t("เปิดการออมด้วยตัวเอง")}</label>
+    <label className="check-label"><input id="savings-opt-in" type="checkbox" checked={enabled} onChange={event => setEnabled(event.target.checked)} />{t("เปิดการออมด้วยตัวเอง")}</label>
     <button className="primary-button full-width" disabled={!enabled || sweep <= 0} onClick={moveToSavings}>{t("ทดลองออม ฿")}{money(sweep, 2)}</button>
     <p className="small-note">{t("ตัวอย่างย้ายครั้งละไม่เกิน ฿150 ภายในวงเงินพร้อมออม การเปิดออมอย่างเดียวไม่ย้ายเงิน")}</p>
     <form onSubmit={withdrawSavings} className="field-group">

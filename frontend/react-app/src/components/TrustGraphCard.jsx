@@ -5,16 +5,16 @@ import MicroAuthModal from './MicroAuthModal';
 import { money } from './ProjectUI';
 const recipients = [{
   id: 'normal',
-  name: 'เพื่อนที่เคยโอนให้',
+  name: 'บัญชีที่คุ้นเคย',
   detail: 'บัญชีเดิม · รูปแบบการโอนตามตัวอย่างปกติ',
   icon: User,
   tone: 'mint',
-  title: 'ไปต่อได้ตามตัวอย่าง',
+  title: 'ไม่พบเงื่อนไขเตือนผู้รับในตัวอย่าง',
   message: 'สถานการณ์นี้ไม่มีกติกาเตือนเพิ่มเติม แต่ผู้ใช้ยังต้องตรวจสอบชื่อและจำนวนเงินก่อนยืนยัน',
   reasons: ['เคยโอนให้ผู้รับรายนี้', 'ไม่มีสัญญาณผิดปกติตามสถานการณ์ที่กำหนด']
 }, {
   id: 'review',
-  name: 'ผู้รับใหม่ที่น่าสงสัย',
+  name: 'บัญชีที่ควรตรวจเพิ่ม',
   detail: 'บัญชีเปิดใหม่ · เงินเข้าแล้วโอนออกเร็ว',
   icon: AlertTriangle,
   tone: 'peach',
@@ -23,7 +23,7 @@ const recipients = [{
   reasons: ['บัญชีผู้รับเพิ่งเปิดได้ 48 ชั่วโมงในตัวอย่าง', 'มีรูปแบบรับเงินแล้วโอนออกภายใน 24 วินาที', 'เว็บแอปมีช่วงทบทวนรายการเสี่ยงตามการตั้งค่า']
 }, {
   id: 'blocked',
-  name: 'ผู้รับที่ถูกบล็อกในข้อมูลทดลอง',
+  name: 'บัญชีที่ถูกระงับ',
   detail: 'บัญชีสมมติที่ถูกระบุไว้ในชุดข้อมูล',
   icon: Ban,
   tone: 'lilac',
@@ -76,7 +76,7 @@ export default function TrustGraphCard() {
               setAmount(event.target.value);
               reset();
             }} inputMode="decimal" /></div></div>
-        <div className="preset-row">{[350, 1200, 3000].map(value => <button type="button" key={value} aria-pressed={Number(amount) === value} onClick={() => {
+        <div className="preset-row">{[350, 1200, 3000, 12000].map(value => <button type="button" key={value} aria-pressed={Number(amount) === value} onClick={() => {
             setAmount(String(value));
             reset();
           }}>฿{money(value)}</button>)}</div>
@@ -85,11 +85,28 @@ export default function TrustGraphCard() {
       </form>
       <div aria-live="polite">{result ? <section className={'risk-panel ' + result.id}>
         <span className="risk-kicker"><ShieldCheck size={17} />{t("ผลจากสถานการณ์สมมติ · ฿")}{money(result.amount, 2)}</span><h3>{t(result.title)}</h3><p>{t(result.message)}</p><ul className="risk-reasons">{result.reasons.map(reason => <li key={reason}>{t(reason)}</li>)}</ul>
+        <TransferImpact result={result} />
         {result.id === 'review' && <button className="secondary-button" onClick={() => setModal(true)}>{t("ดูหน้าทบทวนรายการ ")}<ArrowRight size={16} /></button>}
         {decision && <p role="status" className="status-message">{t(decision === 'CANCEL' ? 'ยกเลิกตัวอย่างแล้ว ไม่มีการโอนเงิน' : 'จบการดูตัวอย่าง ไม่มีการส่งคำสั่งโอนเงิน')}</p>}
         <p className="small-note">{t("ผลที่แสดงเป็นกติกาของตัวอย่างหน้านี้ ไม่ใช่คะแนนที่เรียกจากโมเดลหรือผลตรวจบัญชีจริง")}</p>
       </section> : <section className="review-initial"><span className="icon-box lilac"><ShieldCheck size={23} /></span><h3>{t("เหตุผลมาก่อนคำเตือน")}</h3><p>{t("เลือกผู้รับและกดดูผล เพื่อเปรียบเทียบรายการทั่วไป รายการที่ควรทบทวน และผู้รับที่ถูกบล็อก")}</p></section>}</div>
     </div>
     <MicroAuthModal isOpen={modal} onClose={() => setModal(false)} onConfirmTransfer={setDecision} />
+  </div>;
+}
+
+function TransferImpact({ result }) {
+  const { t } = useLanguage();
+  // Independent illustration, using the same starting values as the FlowSense example.
+  const balance = 24500;
+  const unavailable = result.id === 'blocked' || result.amount > balance;
+  const after = unavailable ? balance : balance - result.amount;
+  const projected = after - 5650 - 600 * 14;
+  const shortfall = Math.max(0, 5000 - projected);
+  return <div className={'transfer-impact ' + (shortfall > 0 ? 'reserve-shortfall' : '')}>
+    <h4>{t('เงินหลังโอนกระทบแผนอย่างไร')}</h4>
+    <div className="impact-comparison"><div><span>{t('เงินก่อนโอน')}</span><strong>฿{money(balance, 2)}</strong></div><div><span>{t(unavailable ? 'ยอดคงเดิม · ทำรายการไม่ได้' : 'เงินหลังโอนตามสมมติฐาน')}</span><strong>฿{money(after, 2)}</strong></div></div>
+    <p>{unavailable ? t('ตัวอย่างนี้ไม่หักยอด เมื่อผู้รับถูกระงับหรือจำนวนเงินเกินยอดบัญชี') : <>{t('หลังกันบิลและงบใช้ชีวิต จะเหลือ ฿')}{money(projected, 2)}{shortfall > 0 ? t(' ต่ำกว่าเงินสำรอง ฿') + money(shortfall, 2) : t(' ยังไม่ต่ำกว่าเงินสำรองที่ตั้งไว้')}</>}</p>
+    <p className="small-note">{t('สมมติฐาน: บัญชี ฿24,500 · บิล ฿5,650 · ใช้วันละ ฿600 × 14 วัน · เงินสำรอง ฿5,000 คำนวณแยกจากความเสี่ยงผู้รับและไม่หักยอดจริง')}</p>
   </div>;
 }
