@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Search, Download, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { datasetAnalyticsData } from '../data/datasetAnalyticsData';
 import { PageIntro, Note, SectionHeading, money } from '../components/ProjectUI';
+import { useResearch, StudySection, StudyFlow } from '../components/ResearchUI';
 const sourceRoot = 'https://github.com/svkhun/k-nexus/blob/main/data/';
 const {
   accounts,
@@ -11,6 +12,7 @@ const {
 const PAGE_SIZE = 10;
 const sources = [['01_flowsense_user_profiles.csv', 'โปรไฟล์สำหรับ FlowSense', '1,140 แถว'], ['02_flowsense_cashflow_transactions.csv', 'ประวัติกระแสเงินสดสมมติ', '17,039 แถว'], ['03_trustgraph_users_and_mule_labels.csv', 'บัญชีและป้ายกำกับสมมติ', '1,200 แถว'], ['04_trustgraph_fraud_transactions.csv', 'ธุรกรรมและป้ายกำกับสมมติ', '6,400 แถว'], ['05_trustgraph_graph_node_embeddings.csv', 'Embedding ของบัญชีที่คำนวณไว้', '1,200 แถว']];
 export default function DatasetAnalyticsPage() {
+  const { data: researchData } = useResearch();
   const {
     t
   } = useLanguage();
@@ -65,6 +67,7 @@ export default function DatasetAnalyticsPage() {
   };
   return <div className="page-stack">
     <PageIntro eyebrow={t("ข้อมูลและการประเมิน")} title={t("ข้อมูลสมมติ ต้องอ่านผลอย่างมีขอบเขต")}>{t("ชุดข้อมูลใช้สร้างต้นแบบและทดสอบเส้นทางการทำงาน ยังไม่ใช่ข้อมูลลูกค้า ข้อมูลผู้ตอบแบบสอบถาม หรือหลักฐานว่าระบบป้องกันการหลอกโอนได้จริง")}</PageIntro>
+    <StudySection title={researchData.title}><p>{researchData.intro}</p><StudyFlow items={researchData.steps}/></StudySection>
     <div className="stats-strip"><div><span>{t("บัญชี TrustGraph ในไฟล์เต็ม")}</span><strong>1,200</strong><small>{t("ข้อมูลสังเคราะห์")}</small></div><div><span>{t("ธุรกรรมในไฟล์เต็ม")}</span><strong>6,400</strong><small>{t("ข้อมูลสังเคราะห์")}</small></div><div><span>{t("ตัวอย่างในตารางด้านล่าง")}</span><strong>{t(accounts.length)} / {t(transactions.length)}</strong><small>{t("บัญชี / ธุรกรรม · ไม่ใช่สัดส่วนสุ่มตัวแทน")}</small></div></div>
     <section aria-label={t("สำรวจข้อมูลตัวอย่าง")}><SectionHeading title={t("สำรวจข้อมูลตัวอย่าง")} kicker={t("อ่านป้ายกำกับจากชุดข้อมูล ไม่ใช่ผลทำนายสด")} />
       <div className="tab-row" role="tablist" aria-label={t("ชนิดข้อมูลตัวอย่าง")}>{[['accounts', t("บัญชีสมมติ")], ['transactions', t("ธุรกรรมสมมติ")]].map(([id, label]) => <button key={id} id={'tab-' + id} role="tab" aria-selected={tab === id} aria-controls="sample-panel" tabIndex={tab === id ? 0 : -1} onClick={() => switchTab(id)} onKeyDown={event => tabKey(event, id === 'accounts' ? 'transactions' : 'accounts')}>{t(label)} ({id === 'accounts' ? accounts.length : transactions.length})</button>)}</div>

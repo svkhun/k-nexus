@@ -1,4 +1,6 @@
+import researchEnglish from './en-research.js';
 export default {
+  ...researchEnglish,
   "ข้ามไปเนื้อหา": "Skip to content",
   "เว็บไซต์นำเสนอ · แอปต้นแบบ": "Project overview · Prototype",
   "เปิดเว็บแอป": "Open web app",

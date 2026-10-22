@@ -1,17 +1,18 @@
-import { useLanguage } from "../i18n/LanguageContext";
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Wallet, ShieldCheck, ArrowRight } from 'lucide-react';
-import { PageIntro, AppLink, SectionHeading, Note } from '../components/ProjectUI';
+import { AppLink } from '../components/ProjectUI';
+import { StudyIntro, StudySection, StudyNote, StudyCards, StudySources, StudyNext, useResearch, appSource } from '../components/ResearchUI';
+
 export default function SimulatorPage() {
-  const {
-    t
-  } = useLanguage();
-  return <div className="page-stack">
-    <PageIntro eyebrow={t("ทดลองใช้งาน")} title={t("เริ่มจาก K-NEXUS App")}>{t("หน้าหลัก การเงิน ธุรกรรม ออมเงิน และโปรไฟล์ เชื่อมการวางแผนเงินกับการทบทวนก่อนโอนในแอปต้นแบบเดียว")}</PageIntro>
-    <section className="app-launch"><div><h2>K-NEXUS App</h2><p>{t("เลือกบัญชีทดลอง ลองจัดบิล งบรายวัน และเงินสำรอง ออมเฉพาะส่วนเกิน ถอนเงินออม และดูผลต่อแผนเงินก่อนยืนยันรายการสมมติ")}</p><div className="button-row"><AppLink>{t("เปิดเว็บแอปในแท็บใหม่")}</AppLink></div><p className="small-note">{t("เปิดบริการแยกบน Render เวลาเริ่มต้นขึ้นกับสถานะของบริการ")}</p></div><span className="launch-symbol" aria-hidden="true">K</span></section>
-    <section><SectionHeading title={t("หรือสำรวจแนวคิดในเว็บไซต์นี้")} kicker={t("ตัวอย่างในเบราว์เซอร์ · ไม่ต้องเชื่อมต่อ API")} /><div className="two-columns equal-columns"><Link to="/flowsense" className="demo-choice"><span className="icon-box mint"><Wallet size={21} /></span><div><h3>{t("ลองวางแผนใช้เงิน")}</h3><p>{t("เปลี่ยนยอด บิล งบรายวัน แล้วลองออม")}</p></div><ArrowRight size={18} /></Link><Link to="/trustgraph" className="demo-choice"><span className="icon-box lilac"><ShieldCheck size={21} /></span><div><h3>{t("ดูเหตุผลก่อนโอน")}</h3><p>{t("เปรียบเทียบการเตือนจากสามสถานการณ์")}</p></div><ArrowRight size={18} /></Link></div></section>
-    <Note>{t("ทั้งเว็บแอปและตัวอย่างในหน้านี้ใช้ข้อมูลสมมติ ไม่มีการเชื่อมต่อบัญชีธนาคารหรือโอนเงินจริง")}</Note>
-    <details className="technical-details"><summary>{t("เดโมเวอร์ชันก่อนหน้า")}</summary><p>{t("เก็บ simulator เดิมไว้สำหรับเปรียบเทียบพัฒนาการ หน้าตาและกติกาบางส่วนต่างจากเว็บแอปปัจจุบัน")}</p><a className="legacy-link" href="/simulator.html" target="_blank" rel="noreferrer">{t("เปิด simulator เดิม ↗")}</a></details>
+  const { evolution: c, common } = useResearch();
+  return <div className="page-stack research-page">
+    <StudyIntro kicker={c.kicker} title={c.title}>{c.intro}</StudyIntro>
+    <p className="study-caption">{c.provenance}</p>
+    <ol className="evolution-studies">{c.changes.map(([title, before, after, implication, file], index) => <li key={title}><span className="evolution-number">0{index + 1}</span><div><h2>{title}</h2><dl>{[before, after, implication].map((text, i) => <div key={text}><dt>{c.labels[i]}</dt><dd>{text}</dd></div>)}</dl><a href={appSource('docs/' + file)[1]} target="_blank" rel="noreferrer" className="evolution-source">{file} ↗</a></div></li>)}</ol>
+    <StudySection title={c.lessonTitle}><p className="study-lead">{c.lesson}</p></StudySection>
+    <StudySection title={c.nextTitle}><StudyCards items={c.next}/></StudySection>
+    <StudyNote title={c.appTitle}>{c.appText}</StudyNote>
+    <div className="button-row"><AppLink>{common.app}</AppLink></div>
+    <StudySources items={[appSource('docs/PRODUCT_REVIEW_2026-10-15.md'), appSource('docs/liquidity-reserve.md'), appSource('docs/transfer-planning.md')]}/>
+    <StudyNext to="/dataset">{common.limit}</StudyNext>
   </div>;
 }

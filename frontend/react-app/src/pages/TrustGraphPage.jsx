@@ -1,18 +1,28 @@
-import { useLanguage } from "../i18n/LanguageContext";
 import React from 'react';
-import TrustGraphCard from '../components/TrustGraphCard';
-import { PageIntro, Note, AppLink, TextLink, SectionHeading } from '../components/ProjectUI';
+import { StudyIntro, StudySection, StudyNote, StudyFlow, StudyCards, StudyTable, StudySources, StudyNext, ConceptGraph, useResearch, codeSource, appSource } from '../components/ResearchUI';
+import { DEMO_PLAN, transferPlan } from '../data/demoPlan.mjs';
+import { money } from '../components/ProjectUI';
+
 export default function TrustGraphPage() {
-  const {
-    t
-  } = useLanguage();
-  return <div className="page-stack">
-    <PageIntro eyebrow={t("TrustGraph · ตรวจความเสี่ยงก่อนโอน")} title={t("ดูทั้งผู้รับ และเงินที่จะเหลือหลังโอน")}>{t("ทบทวนเหตุผลความเสี่ยงควบคู่กับผลกระทบต่อบิล งบใช้ชีวิต และเงินสำรอง ผู้รับที่คุ้นเคยก็อาจทำให้เงินไม่พอใช้ได้หากโอนมากเกินไป")}</PageIntro>
-    <Note>{t("ตัวอย่างด้านล่างเป็นการสาธิตหน้าจอด้วยสถานการณ์ที่กำหนดไว้ ไม่ได้วิเคราะห์บัญชีจริง ปุ่มเปิดเว็บแอปจะพาไปทดลองขั้นตอนตรวจความเสี่ยงผ่าน API")}</Note>
-    <TrustGraphCard />
-    <section><SectionHeading title={t("เมื่อไปทดลองในเว็บแอป")} kicker={t("ขั้นตอนใน K-NEXUS App")} /><ol className="process-list"><li><h3>{t("เลือกผู้รับและระบุจำนวนเงิน")}</h3><p>{t("ระบบตรวจข้อมูลผู้รับและสัญญาณธุรกรรมจากบัญชีสมมติ ก่อนเข้าสู่ขั้นตอนทำรายการ")}</p></li><li><h3>{t("ดูเงินก่อนและหลังโอน")}</h3><p>{t("หน้าทบทวนแสดงผลกระทบต่อแผนใช้เงินและเงินสำรอง หากยอด บิล หรือแผนเปลี่ยน ต้องตรวจเงื่อนไขของรายการอีกครั้ง")}</p></li><li><h3>{t("ถ้ามีความเสี่ยง ให้เหตุผลและเวลาทบทวน")}</h3><p>{t("ช่วงทบทวนรายการเสี่ยงตั้งต้นไว้ 15 นาทีและควบคุมที่เซิร์ฟเวอร์ ผู้ใช้เปลี่ยนการตั้งค่าสำหรับรายการใหม่ได้ การรอครบเวลาไม่ส่งเงินอัตโนมัติและไม่รับรองว่าปลอดภัย")}</p></li><li><h3>{t("ยืนยันตามเงื่อนไข หรือยกเลิกรายการ")}</h3><p>{t("การยืนยันตัวตนในต้นแบบเป็นการจำลอง ส่วนผู้รับที่ถูกบล็อกยังทำรายการไม่ได้ ผลทั้งหมดเป็นธุรกรรมสมมติ")}</p></li></ol></section>
-    <Note>{t('ในแอปมีทางเลือกติดต่อธนาคารผ่านช่องทางทางการเพื่อขอคำแนะนำ การติดต่อไม่ได้อนุมัติรายการหรือทำให้โอนเงินได้อัตโนมัติ')}</Note>
-    <Note warm>{t("โมเดล TrustGraph ยังต้องประเมินใหม่โดยป้องกันข้อมูลคำตอบรั่วเข้าสู่การฝึก จึงไม่แสดงค่าความแม่นยำเดิมเป็นหลักฐานว่าป้องกันการหลอกโอนได้จริง")}</Note>
-    <div className="button-row"><AppLink>{t("ลองโอนในเว็บแอปต้นแบบ")}</AppLink><TextLink to="/dataset">{t("อ่านข้อจำกัดของข้อมูลและโมเดล")}</TextLink></div>
+  const { trust: c, common } = useResearch();
+  const expense = transferPlan({ amount: 1200 });
+  const bill = transferPlan({ amount: 1200, kind: 'bill' });
+  const numericRows = [[DEMO_PLAN.balance, DEMO_PLAN.bills, expense.beforeDaily], [expense.after, expense.remainingBills, expense.afterDaily], [bill.after, bill.remainingBills, bill.afterDaily]];
+  return <div className="page-stack research-page">
+    <StudyIntro kicker={c.kicker} title={c.title}>{c.intro}</StudyIntro>
+    <StudyNote title={common.problem}>{c.problem}</StudyNote>
+    <p className="study-followup">{c.threat}</p>
+    <StudySection title={c.graphTitle}><div className="graph-discussion"><p>{c.graphText}</p><ConceptGraph caption={c.graphCaption}/></div></StudySection>
+    <StudySection title={c.pipelineTitle}><StudyFlow items={c.pipeline}/></StudySection>
+    <StudySection title={c.inputTitle}><StudyCards items={c.inputs}/></StudySection>
+    <StudySection title={c.rationaleTitle}><p>{c.rationale}</p></StudySection>
+    <StudyNote title={c.leakageTitle} warm>{c.leakage}</StudyNote><p className="study-followup">{c.repair}</p>
+    <StudySection title={c.responseTitle}><StudyCards items={c.responses}/></StudySection>
+    <p className="study-caption">{c.demoPolicy}</p>
+    <StudySection title={c.jointTitle}><p className="study-lead">{c.joint}</p></StudySection>
+    <StudySection title={c.comparisonTitle}><StudyTable headers={c.comparisonHeaders} rows={numericRows.map((row, i) => [c.comparisonRows[i], ...row.map(value => '฿' + money(value, 2))])} label={c.comparisonTitle}/><p className="study-caption">{c.comparisonNote}</p></StudySection>
+    <StudyNote title={c.evaluationTitle}>{c.evaluation}</StudyNote>
+    <StudySources items={[codeSource('src/train_trustgraph_two_tier.py'), appSource('src/transfer_planning.py'), appSource('docs/transfer-cooldown.md'), ['R-GCN · Schlichtkrull et al.', 'https://arxiv.org/abs/1703.06103']]}/>
+    <StudyNext to="/architecture">Machine Learning & Data Science</StudyNext>
   </div>;
 }

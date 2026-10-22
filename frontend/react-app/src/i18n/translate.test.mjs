@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import english from './en.js';
 import { translate } from './translate.mjs';
+import { researchContent } from '../data/researchContent.js';
+import { researchDetails } from '../data/researchDetails.js';
 
 test('Thai remains the default and English is explicitly selected', () => {
   assert.equal(translate('ออมเงิน'), 'ออมเงิน');
@@ -35,4 +37,19 @@ test('all English catalog values are translated and preserve interpolation field
     assert.equal(/[\u0E01-\u0E3A\u0E40-\u0E5B]/.test(en), false, thai);
     assert.deepEqual([...thai.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort(), [...en.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort(), thai);
   }
+});
+
+test('research content has matching Thai/English structure and translated English leaves', () => {
+  function compare(thai, en, path) {
+    assert.equal(typeof en, typeof thai, path);
+    if (typeof thai === 'string') {
+      assert.ok(en.trim(), path);
+      assert.equal(/[\u0E01-\u0E3A\u0E40-\u0E5B]/.test(en), false, path);
+    } else {
+      assert.deepEqual(Object.keys(en), Object.keys(thai), path);
+      for (const key of Object.keys(thai)) compare(thai[key], en[key], path + '.' + key);
+    }
+  }
+  compare(researchContent.th, researchContent.en, 'content');
+  compare(researchDetails.th, researchDetails.en, 'details');
 });

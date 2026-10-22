@@ -23,7 +23,7 @@ export default function App() {
     <a href="#main-content" className="skip-link">{t("ข้ามไปเนื้อหา")}</a>
     <ScrollToTop /><Navbar />
     <div className="project-body">
-      <header className="project-topbar"><span>K-NEXUS <span className="topbar-caption">/ {t("ภาพรวมและแนวคิดของแอป")}</span></span><div className="topbar-actions"><span className="prototype-label">{t("ข้อมูลสมมติ · ไม่มีการโอนเงินจริง")}</span><LanguageSettings /></div></header>
+      <header className="project-topbar"><span>K-NEXUS <span className="topbar-caption">/ {t('ปัญหา · ข้อมูล · โมเดล · แนวทางแก้')}</span></span><div className="topbar-actions"><span className="prototype-label">RESEARCH & PRODUCT CASE STUDY</span><LanguageSettings /></div></header>
       <main id="main-content" className="page-content" tabIndex={-1}>
         <PageEffects><Routes>
           <Route path="/" element={<HomePage />} />
@@ -32,7 +32,8 @@ export default function App() {
           <Route path="/architecture" element={<ArchitecturePage />} />
           <Route path="/personas" element={<PersonasPage />} />
           <Route path="/dataset" element={<DatasetAnalyticsPage />} />
-          <Route path="/app" element={<SimulatorPage />} />
+          <Route path="/evolution" element={<SimulatorPage />} />
+          <Route path="/app" element={<Navigate to="/evolution" replace />} />
           <Route path="/wealthpilot" element={<Navigate to="/flowsense" replace />} />
           <Route path="/sentinel" element={<Navigate to="/trustgraph" replace />} />
           <Route path="/simulator" element={<Navigate to="/app" replace />} />

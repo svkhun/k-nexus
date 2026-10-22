@@ -16,12 +16,12 @@ export function LanguageProvider({ children }) {
   useLayoutEffect(() => {
     document.documentElement.lang = language;
     document.title = language === 'th'
-      ? 'K-NEXUS Showcase | แผนเงินและดูแลก่อนโอน'
-      : 'K-NEXUS Showcase | Spending plans & transfer review';
+      ? 'K-NEXUS Showcase | ที่มา ข้อมูล และ Machine Learning'
+      : 'K-NEXUS Showcase | Problem, Data & Machine Learning';
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = language === 'th'
-      ? 'K-NEXUS: แอปต้นแบบที่รวม FlowSense และ TrustGraph สำหรับวางแผนใช้เงิน ออมเงิน และตรวจความเสี่ยงก่อนโอน'
-      : 'Explore K-NEXUS, a prototype combining FlowSense and TrustGraph for spending plans, savings, and pre-transfer risk review.';
+      ? 'เบื้องหลัง K-NEXUS: ปัญหาที่เป็นจุดเริ่มต้น ข้อมูลและโมเดลของ FlowSense / TrustGraph วิธีแก้ปัญหา พัฒนาการจาก feedback และขอบเขตของหลักฐาน'
+      : 'Behind K-NEXUS: the starting problem, FlowSense and TrustGraph data and models, solution design, feedback-driven evolution and evidence boundaries.';
   }, [language]);
   return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>;
 }

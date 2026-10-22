@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query, Header, Path, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -266,6 +266,7 @@ def get_spa_or_landing_response():
 @app.get("/wealthpilot", response_class=FileResponse)
 @app.get("/sentinel", response_class=FileResponse)
 @app.get("/architecture", response_class=FileResponse)
+@app.get("/evolution", response_class=FileResponse)
 @app.get("/personas", response_class=FileResponse)
 @app.get("/dataset", response_class=FileResponse)
 @app.get("/data", response_class=FileResponse)
@@ -277,16 +278,9 @@ def get_spa_or_landing_response():
 def serve_spa():
     return get_spa_or_landing_response()
 
-@app.get("/simulator.html", response_class=FileResponse)
+@app.get("/simulator.html", response_class=RedirectResponse)
 def serve_simulator_page():
-    no_cache_headers = {"Cache-Control": "no-cache, no-store, must-revalidate", "Pragma": "no-cache"}
-    dist_sim = os.path.join(REACT_DIST_DIR, "simulator.html")
-    if os.path.exists(dist_sim):
-        return FileResponse(dist_sim, headers=no_cache_headers)
-    idx = os.path.join(FRONTEND_DIR, "index.html")
-    if os.path.exists(idx):
-        return FileResponse(idx, headers=no_cache_headers)
-    return {"status": "Simulator not found"}
+    return RedirectResponse("/evolution", status_code=307)
 
 @app.get("/favicon.ico", include_in_schema=False)
 def serve_favicon():

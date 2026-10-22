@@ -14,7 +14,7 @@ import unittest
 from unittest.mock import patch
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.testclient import TestClient
 
 
@@ -31,12 +31,13 @@ def load_source_nodes(nodes, namespace):
 class FrontendProbeTests(unittest.TestCase):
     def setUp(self):
         app = FastAPI()
-        names = {"get_spa_or_landing_response", "serve_spa"}
+        names = {"get_spa_or_landing_response", "serve_spa", "serve_simulator_page"}
         nodes = [node for node in TREE.body if isinstance(node, ast.FunctionDef) and node.name in names]
         load_source_nodes(nodes, {
             "app": app,
             "os": os,
             "FileResponse": FileResponse,
+            "RedirectResponse": RedirectResponse,
             "FRONTEND_DIR": str(ROOT / "frontend"),
             "REACT_DIST_DIR": str(ROOT / "frontend" / "react-app" / "dist"),
         })
@@ -54,6 +55,16 @@ class FrontendProbeTests(unittest.TestCase):
 
     def test_head_support_does_not_allow_posting_to_homepage(self):
         self.assertEqual(self.client.post("/").status_code, 405)
+
+    def test_evolution_supports_direct_navigation_to_the_showcase(self):
+        response = self.client.get("/evolution")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('id="root"', response.text)
+
+    def test_legacy_simulator_redirects_to_project_explanation(self):
+        response = self.client.get("/simulator.html", follow_redirects=False)
+        self.assertEqual(response.status_code, 307)
+        self.assertEqual(response.headers["location"], "/evolution")
 
 
 def boot_signing_engine(environment):

@@ -5,6 +5,7 @@ import App from './App.jsx';
 import { LanguageProvider } from './i18n/LanguageContext';
 import './index.css';
 import './showcase-theme.css';
+import './research.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

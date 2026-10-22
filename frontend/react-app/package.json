@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:i18n": "node --test src/i18n/translate.test.mjs"
+    "test:i18n": "node --test src/i18n/translate.test.mjs",
+    "test:plan": "node --test src/data/demoPlan.test.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
