@@ -7,7 +7,7 @@ import NexusBrand from './NexusBrand';
 const links = [['/', 'ที่มาและโจทย์ปัญหา', Home], ['/personas', 'สถานการณ์และความต้องการ', Users], ['/flowsense', 'FlowSense · แผนเงิน', Wallet], ['/trustgraph', 'TrustGraph · ความเสี่ยง', ShieldCheck], ['/architecture', 'Machine Learning & Data Science', Layers], ['/evolution', 'พัฒนาการจาก feedback', History], ['/dataset', 'ข้อมูลและการประเมิน', Database]];
 export default function Navbar() {
   const {
-    t
+    t, language
   } = useLanguage();
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -19,7 +19,7 @@ export default function Navbar() {
       <nav id="project-navigation" aria-label={t("เมนูโครงการ")}>{links.map(([path, label, Icon]) => <NavLink key={path} to={path} onClick={() => setOpen(false)} end={path === '/'} className={({
           isActive
         }) => 'sidebar-link ' + (isActive ? 'active' : '')}><Icon size={19} /><span>{t(label)}</span><ArrowRight className="nav-arrow" size={14} /></NavLink>)}</nav>
-      <div className="sidebar-bottom"><p>{t('จากแนวคิดสู่การนำไปใช้')}</p><a href={WEB_APP_URL} target="_blank" rel="noreferrer" className="sidebar-app-link">{t('เปิด application แยก')}<ArrowUpRight size={17} /></a><div className="sidebar-note"><strong>INDEPENDENT PROTOTYPE</strong><span>{t('ที่มา · ข้อมูล · วิธีคิด · ข้อจำกัด')}<br />{t("ข้อมูลสมมติ · ไม่มีการโอนเงินจริง")}</span></div></div>
+      <div className="sidebar-bottom"><p>{t('จากแนวคิดสู่การนำไปใช้')}</p><a href={WEB_APP_URL} target="_blank" rel="noreferrer" className="sidebar-app-link">{t('เปิด application แยก')}<ArrowUpRight size={17} /></a><p className="sidebar-link-boundary">{language === 'th' ? 'ลิงก์สาธารณะ: ยังไม่ยืนยันว่าเป็นรุ่น baseline ที่ตรวจใน local' : 'Public app: unverified as the locally checked baseline build'}</p><div className="sidebar-note"><strong>INDEPENDENT PROTOTYPE</strong><span>{t('ที่มา · ข้อมูล · วิธีคิด · ข้อจำกัด')}<br />{t("ข้อมูลสมมติ · ไม่มีการโอนเงินจริง")}</span></div></div>
     </aside>
   </>;
 }

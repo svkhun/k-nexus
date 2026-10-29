@@ -1,0 +1,172 @@
+{
+  "as_of_date": "2026-10-29",
+  "scope": "local synthetic demo; source handoff evidence, not a new Application test run",
+  "policy": "history28-min7-scenario-abstain.v1",
+  "adapter": "live-intraday-next-day.v1",
+  "scenario_version": "synthetic-persona-assumptions.2026-10-29.1",
+  "personas": [
+    {
+      "account": "ACC_0100",
+      "name_th": "เมย์",
+      "name_en": "May",
+      "method": "SCENARIO",
+      "known_days": 0,
+      "window_days": 28,
+      "daily_non_bill_satang": 35000
+    },
+    {
+      "account": "ACC_0101",
+      "name_th": "นนท์",
+      "name_en": "Non",
+      "method": "SCENARIO",
+      "known_days": 0,
+      "window_days": 28,
+      "daily_non_bill_satang": 60000
+    },
+    {
+      "account": "ACC_0150",
+      "name_th": "แพรว",
+      "name_en": "Praew",
+      "method": "SCENARIO",
+      "known_days": 0,
+      "window_days": 28,
+      "daily_non_bill_satang": 30000
+    }
+  ],
+  "sources": [
+    {
+      "repository": "Application",
+      "path": "BASELINE_INTEGRATION_REPORT.md",
+      "sha256": "ebb08e149f67734784678b6daa4c72a29c7022cc5bb13995603e1f11ad36d8c7"
+    },
+    {
+      "repository": "Application",
+      "path": "SHOWCASE_HANDOFF.md",
+      "sha256": "08b6cd33257b16dac5f1970a97640dbc221bf76aea53a245d98e0ceee6ce0467"
+    },
+    {
+      "repository": "Application",
+      "path": "config/baseline-personas.v1.json",
+      "sha256": "bd2c09c81d4f8e9705c03f2015ddd969ae99d1be90e5b2279209b792cbdbd2cf"
+    },
+    {
+      "repository": "Application",
+      "path": "models/serving.json",
+      "sha256": "acdeac1fa7a3bc7b814afcd0bcb89d0188645b4ee9edf5f1954ff7d30a1c407e"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/browser-verification.json",
+      "sha256": "3d1cf0eebd26231c20395bbf888717a60f2704ab664b52f65076ebdccf6ae539"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/check-results.json",
+      "sha256": "6331a2d74bd52c90d29e0b059be0b916323dd30ab25fb4fe4345b9d70048a767"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/package-integrity.json",
+      "sha256": "d9486502d18d1bc9983c3e989401e214a6bdf7370bde834b3e5e7e3da8d71b34"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/browser-may.jpg",
+      "sha256": "6b2faf41d602ccdbaff10962a3e51ca5b68601bbeef586eee12022ca79a4eaba"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/browser-history-chart.jpg",
+      "sha256": "f1a95a488e2b2db59e1d2ddb10f44ae6ae82638a04e4aee6a9b47f2621121501"
+    },
+    {
+      "repository": "Application",
+      "path": "artifacts/baseline-integration/browser-abstain-savings.jpg",
+      "sha256": "e38f03e36c505f18218aa5980803be976468354e404a37be04c6782326e54325"
+    }
+  ],
+  "images": [
+    {
+      "bundled_name": "scenario-profile.jpg",
+      "source": "browser-may.jpg",
+      "sha256": "6b2faf41d602ccdbaff10962a3e51ca5b68601bbeef586eee12022ca79a4eaba",
+      "acceptance_fixture": false
+    },
+    {
+      "bundled_name": "history-fixture.jpg",
+      "source": "browser-history-chart.jpg",
+      "sha256": "f1a95a488e2b2db59e1d2ddb10f44ae6ae82638a04e4aee6a9b47f2621121501",
+      "acceptance_fixture": true
+    },
+    {
+      "bundled_name": "abstain-savings.jpg",
+      "source": "browser-abstain-savings.jpg",
+      "sha256": "e38f03e36c505f18218aa5980803be976468354e404a37be04c6782326e54325",
+      "acceptance_fixture": true
+    }
+  ],
+  "research": {
+    "study_id": "fs-gate2-20261028-01",
+    "status": "STUDY_COMPLETE_CANDIDATE_NOT_PASSED",
+    "validated_horizons": [],
+    "paired_cumulative_mae": {
+      "1": {
+        "candidate_cumulative_mae_thb": 73.82647639182524,
+        "candidate_only_scored_origins": 6,
+        "comparator_cumulative_mae_thb": 78.27369274136716,
+        "comparator_only_scored_origins": 0,
+        "paired_origins": 1419,
+        "purpose": "paired descriptive comparison only; does not discard unmatched rows from original denominator/coverage reports",
+        "relative_gain": 0.05681623280808357
+      },
+      "14": {
+        "candidate_cumulative_mae_thb": 1212.7410008779632,
+        "candidate_only_scored_origins": 6,
+        "comparator_cumulative_mae_thb": 199.87188762071995,
+        "comparator_only_scored_origins": 0,
+        "paired_origins": 1139,
+        "purpose": "paired descriptive comparison only; does not discard unmatched rows from original denominator/coverage reports",
+        "relative_gain": -5.067591672418082
+      },
+      "30": {
+        "candidate_cumulative_mae_thb": 2701.630214094558,
+        "candidate_only_scored_origins": 6,
+        "comparator_cumulative_mae_thb": 313.3161909009812,
+        "comparator_only_scored_origins": 0,
+        "paired_origins": 1121,
+        "purpose": "paired descriptive comparison only; does not discard unmatched rows from original denominator/coverage reports",
+        "relative_gain": -7.6226958342806075
+      },
+      "7": {
+        "candidate_cumulative_mae_thb": 567.2870758738278,
+        "candidate_only_scored_origins": 6,
+        "comparator_cumulative_mae_thb": 148.480852514919,
+        "comparator_only_scored_origins": 0,
+        "paired_origins": 1173,
+        "purpose": "paired descriptive comparison only; does not discard unmatched rows from original denominator/coverage reports",
+        "relative_gain": -2.8206076154959314
+      }
+    },
+    "study_sources": [
+      {
+        "path": "artifacts/flowsense-studies/fs-gate2-20261028-01/decision.json",
+        "sha256": "ba296e37a6b3e217461eb9b1b6cb3206fcafe222cbc508f3d61ed1c2640bb78c"
+      },
+      {
+        "path": "artifacts/flowsense-studies/fs-gate2-20261028-01/diagnostics.json",
+        "sha256": "5391cf13c1bd4ce918ebcd8dc1629c48d71eb0308eb5c53839f2bed74dac4178"
+      },
+      {
+        "path": "artifacts/flowsense-studies/fs-gate2-20261028-01/REPORT_TH.md",
+        "sha256": "1a92dd1aa6332228f36de4695804e117798f761029acd41f340d92530db2cccd"
+      },
+      {
+        "path": "artifacts/flowsense-studies/fs-gate2-20261028-01/DIAGNOSTICS_TH.md",
+        "sha256": "945b6ace9787976f6cc1776c099b9a44767929ccb0d18637f953c1582889a9be"
+      }
+    ],
+    "direct_status": "DEVELOPMENT_COMPLETE_NOT_VALIDATED_FOR_INTEGRATION"
+  },
+  "production_verified": false,
+  "flowsense_ml_enabled": false
+}

@@ -1,0 +1,168 @@
+{
+  "checks": {
+    "application_sources": true,
+    "frozen_study_sources": true,
+    "manifest_mirrors": true,
+    "backend_only_static_additions": true,
+    "installed_versions_match_lock": true,
+    "non_optional_packages_present": true
+  },
+  "application_source_count": 10,
+  "frozen_study_source_count": 4,
+  "installed_packages": 142,
+  "dependency_provenance": "Copied existing ignored node_modules after npm ci offline cache miss and online npm exit-handler failure; installed package versions verified against the unchanged lockfile; no clean-install PASS claimed",
+  "i18n": {
+    "passed": 6,
+    "failed": 0
+  },
+  "plan": {
+    "passed": 5,
+    "failed": 0
+  },
+  "build": {
+    "status": "PASS",
+    "modules": 1533,
+    "vite": "5.4.21"
+  },
+  "static_serving": {
+    "status": "PASS",
+    "scope": "Verify the production static-serving slice without loading model sessions.\n\nThis is an in-process ASGI check, not a live socket, browser, or full API test.",
+    "checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/flowsense",
+        "status": 200,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/architecture",
+        "status": 200,
+        "type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/assets/index-CP9zO5Dm.js",
+        "status": 200,
+        "type": "text/javascript; charset=utf-8"
+      },
+      {
+        "path": "/assets/index-Bc6BcUNt.css",
+        "status": 200,
+        "type": "text/css; charset=utf-8"
+      },
+      {
+        "path": "/release.json",
+        "status": 200,
+        "type": "application/json"
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/scenario-profile.jpg",
+        "status": 200,
+        "type": "image/jpeg",
+        "sha256_match": true
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/history-fixture.jpg",
+        "status": 200,
+        "type": "image/jpeg",
+        "sha256_match": true
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/abstain-savings.jpg",
+        "status": 200,
+        "type": "image/jpeg",
+        "sha256_match": true
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/provenance.json",
+        "status": 200,
+        "type": "application/json",
+        "exact_manifest_bytes": true
+      },
+      {
+        "path": "/evidence/.env",
+        "status": 404
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/missing.jpg",
+        "status": 404
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/%2e%2e/%2e%2e/.env",
+        "status": 404
+      },
+      {
+        "path": "/evidence/application-baseline-2026-10-29/%2e%2e%2f%2e%2e%2findex.html",
+        "status": 404
+      },
+      {
+        "path": "/.git/config",
+        "status": 404
+      },
+      {
+        "path": "/src/app_v2.py",
+        "status": 404
+      },
+      {
+        "path": "/output/",
+        "status": 404
+      },
+      {
+        "path": "/data/private.csv",
+        "status": 404
+      }
+    ]
+  },
+  "react_static_render": {
+    "type": "React static render, not browser/HTTP/device QA",
+    "results": [
+      {
+        "page": "flowsense",
+        "language": "th",
+        "status": "PASS",
+        "bytes": 29006
+      },
+      {
+        "page": "home",
+        "language": "th",
+        "status": "PASS",
+        "bytes": 13862
+      },
+      {
+        "page": "architecture",
+        "language": "th",
+        "status": "PASS",
+        "bytes": 13641
+      },
+      {
+        "page": "flowsense",
+        "language": "en",
+        "status": "PASS",
+        "bytes": 20747
+      },
+      {
+        "page": "home",
+        "language": "en",
+        "status": "PASS",
+        "bytes": 10379
+      },
+      {
+        "page": "architecture",
+        "language": "en",
+        "status": "PASS",
+        "bytes": 9656
+      }
+    ]
+  },
+  "browser": {
+    "status": "BLOCKED",
+    "reason": "Computer Use stopped: could not determine the current browser URL on Windows with enough confidence to enforce policy. No new-release screenshot/DOM/layout/console QA."
+  },
+  "localhost": {
+    "status": "NOT_RUN",
+    "note": "Prior loopback BLOCKED history retained unchanged; new static checks use in-process ASGI without sockets."
+  }
+}

@@ -239,6 +239,18 @@ REACT_DIST_DIR = os.path.join(FRONTEND_DIR, "react-app", "dist")
 if os.path.exists(os.path.join(REACT_DIST_DIR, "assets")):
     app.mount("/assets", StaticFiles(directory=os.path.join(REACT_DIST_DIR, "assets")), name="assets")
 
+# Serve only the evidence selected for this public Showcase release.
+BASELINE_EVIDENCE_DIR = os.path.join(REACT_DIST_DIR, "evidence", "application-baseline-2026-10-29")
+if os.path.isdir(BASELINE_EVIDENCE_DIR):
+    app.mount("/evidence/application-baseline-2026-10-29", StaticFiles(directory=BASELINE_EVIDENCE_DIR), name="application-baseline-evidence")
+
+@app.get("/release.json", include_in_schema=False)
+def serve_release_identity():
+    release_path = os.path.join(REACT_DIST_DIR, "release.json")
+    if not os.path.isfile(release_path):
+        raise HTTPException(status_code=404, detail="Release identity not found")
+    return FileResponse(release_path, media_type="application/json", headers={"Cache-Control": "no-cache"})
+
 # Mount Frontend Static Assets (prefer REACT_DIST_DIR/static, fallback to FRONTEND_DIR)
 if os.path.exists(os.path.join(REACT_DIST_DIR, "static")):
     app.mount("/static", StaticFiles(directory=os.path.join(REACT_DIST_DIR, "static")), name="static")

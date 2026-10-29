@@ -215,3 +215,26 @@ npm run build
 3. **No Real Banking Connectivity:** There is no integration with live banking cores, payment networks, or biometric hardware.
 4. **Volatile In-Memory Storage:** Session balances and history expire 1 hour after session creation or upon container restart/redeployment.
 5. **Decision Support, Not Automated Advice:** Financial projections and risk reasons are decision aids for exploration, not certified financial recommendations or guaranteed fraud interdictions.
+
+
+## Baseline ที่ส่งมอบใน local — 29 ตุลาคม 2026
+
+Application เชื่อม baseline กับ forecast, plan, savings และ transfer review แล้วตาม handoff ใช้ฐานรายจ่ายเดียวกัน รวม outstanding bills ถึงก่อน payday ถัดไป รวมบิลเดือนถัดไป และจำลองบนสำเนา ไม่ชำระบิลจริงจากการอ่านกราฟ
+
+| Persona | วิธีเริ่มต้น | รายจ่าย non-bill สมมติ |
+| --- | --- | ---: |
+| เมย์ / ACC_0100 | SCENARIO N0/28 | 350 บาท/วัน |
+| นนท์ / ACC_0101 | SCENARIO N0/28 | 600 บาท/วัน |
+| แพรว / ACC_0150 | SCENARIO N0/28 | 300 บาท/วัน |
+
+ที่มา `config/baseline-personas.v1.json` ฝั่ง Application, version `synthetic-persona-assumptions.2026-10-29.1` เป็น engineering assumptions ไม่ใช่ค่าเฉลี่ยที่วัดจริงและไม่รวมบิล
+
+HISTORY_MEAN ใช้ 28 วันปิดล่าสุด ต้องมี complete known อย่างน้อย 7 วัน; known zero นับเป็นข้อมูล ส่วน missing/partial ไม่แทนศูนย์ หากไม่พอใช้ scenario ที่มี version/provenance ไม่เช่นนั้น ABSTAIN ส่ง null พร้อมเหตุผล ภาพ HISTORY N7/28 เป็น **HAND_AUTHORED_ACCEPTANCE_FIXTURE_NOT_LEDGER** ไม่ใช่ประวัติ persona หรือ accepted research history
+
+Adapter `live-intraday-next-day.v1` เริ่มที่ยอดปัจจุบัน/as-of แสดงวันนี้ + 30 วันอนาคต โดยสมมติรายจ่ายเริ่มพรุ่งนี้ ไม่หัก posted debits ของวันนี้ซ้ำ และไม่อ้างเป็น midnight-issued forecast ภาระบิลกับเงินเดือนเป็น projection ไม่ใช่การลงเงินจริง
+
+Application handoff รายงาน backend **148**, frontend **26**, build, real HTTP และ bounded browser smoke ผ่าน สิ่งเหล่านี้เป็นหลักฐานจากรอบ Application ไม่ใช่การรันซ้ำใน Showcase และไม่ครอบคลุม iPad จริง, browser ทุก flow, production/CI/load หรือผลภาคสนาม
+
+FlowSense ML ยังคง `flowsense_enabled=false`; baseline ใช้ switch แยก `FLOWSENSE_BASELINE_MODE` ย้อนกลับด้วย `OFF` ใน process ใหม่โดยรักษา bill/retry/security และ TrustGraph pair ไว้ Local default ไม่ยืนยัน production default หรือ deployed build ลิงก์แอปสาธารณะอาจเป็นคนละรุ่น ไม่มี deploy ในรอบนี้
+
+รายละเอียดและ hashes ของ source/evidence: [Baseline handoff review](docs/application-baseline-2026-10-29/README.md) และ [source/evidence manifest](docs/application-baseline-2026-10-29/SOURCE_MANIFEST.json)

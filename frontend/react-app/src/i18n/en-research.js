@@ -1,4 +1,8 @@
 export default {
+  'Embedding legacy · แยกจาก package ใหม่': 'Legacy embeddings; separate from the new package',
+  'Embedding package 2026.10.27.1 · จำนวนบัญชี': 'Package 2026.10.27.1 embeddings; account count',
+  '1,179 บัญชี': '1,179 accounts',
+  'โมเดลเดิมมี label leakage ส่วน handoff รุ่นใหม่ใช้ channel และกราฟอดีตแบบ self-supervised ผลทดสอบแยกจาก blacklist/policy และไม่ยืนยันประสิทธิผลในโลกจริง': 'Legacy models contain label leakage. The new handoff uses channel relations and past-only self-supervised graph learning. Tests exclude blacklist/policy overrides and do not establish real-world efficacy.',
   'ที่มาและโจทย์ปัญหา': 'Origin & problem',
   'สถานการณ์และความต้องการ': 'Scenarios & needs',
   'FlowSense · แผนเงิน': 'FlowSense · Planning',

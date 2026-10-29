@@ -1,0 +1,162 @@
+{
+  "packageVersion": "2026.10.27.1",
+  "flowsense": {
+    "existing_user_backtests": [
+      {
+        "train": {
+          "start": "2026-06-08T00:00:00",
+          "end": "2026-07-24T00:00:00",
+          "samples": 5640,
+          "users": 120
+        },
+        "test": {
+          "start": "2026-07-25T00:00:00",
+          "end": "2026-08-05T00:00:00",
+          "samples": 1440,
+          "users": 120
+        },
+        "mae_model": 220.5615381673009,
+        "mae_historical_mean": 314.84909943853427,
+        "mae_seasonal_naive_7d": 282.71240277777775
+      },
+      {
+        "train": {
+          "start": "2026-06-08T00:00:00",
+          "end": "2026-08-05T00:00:00",
+          "samples": 7080,
+          "users": 120
+        },
+        "test": {
+          "start": "2026-08-06T00:00:00",
+          "end": "2026-08-17T00:00:00",
+          "samples": 1440,
+          "users": 120
+        },
+        "mae_model": 224.10325607939555,
+        "mae_historical_mean": 333.8422592984934,
+        "mae_seasonal_naive_7d": 289.6297083333333
+      },
+      {
+        "train": {
+          "start": "2026-06-08T00:00:00",
+          "end": "2026-08-17T00:00:00",
+          "samples": 8520,
+          "users": 120
+        },
+        "test": {
+          "start": "2026-08-18T00:00:00",
+          "end": "2026-08-29T00:00:00",
+          "samples": 1440,
+          "users": 120
+        },
+        "mae_model": 178.16079118688688,
+        "mae_historical_mean": 285.04106220657275,
+        "mae_seasonal_naive_7d": 221.9063263888889
+      }
+    ],
+    "new_user_cold_start": {
+      "test": {
+        "start": "2026-08-18T00:00:00",
+        "end": "2026-08-29T00:00:00",
+        "samples": 360,
+        "users": 30
+      },
+      "mae_model": 194.12661973320124,
+      "mae_global_training_mean": 292.3407501434533
+    }
+  },
+  "trustgraph": {
+    "periods": {
+      "graph_context": {
+        "start": "2026-08-01T00:39:00",
+        "end": "2026-08-12T23:53:00",
+        "samples": 2536,
+        "positive_labels": 162
+      },
+      "train": {
+        "start": "2026-08-13T00:02:00",
+        "end": "2026-08-17T23:50:00",
+        "samples": 1031,
+        "positive_labels": 66
+      },
+      "validation": {
+        "start": "2026-08-19T00:03:00",
+        "end": "2026-08-24T23:47:00",
+        "samples": 1293,
+        "positive_labels": 90
+      },
+      "test": {
+        "start": "2026-08-25T00:03:00",
+        "end": "2026-08-30T23:54:00",
+        "samples": 1354,
+        "positive_labels": 67
+      }
+    },
+    "results": {
+      "no_gnn_baseline": {
+        "validation": {
+          "samples": 1293,
+          "positive_labels": 90,
+          "pr_auc_average_precision": 0.9959776708012484,
+          "roc_auc": 0.9997367691881407,
+          "threshold": 0.5,
+          "precision": 0.9662921348314607,
+          "recall": 0.9555555555555556,
+          "confusion_matrix_tn_fp_fn_tp": [
+            1200,
+            3,
+            4,
+            86
+          ]
+        },
+        "test": {
+          "samples": 1354,
+          "positive_labels": 67,
+          "pr_auc_average_precision": 0.9964040920001017,
+          "roc_auc": 0.9998144475756415,
+          "threshold": 0.5,
+          "precision": 0.9705882352941176,
+          "recall": 0.9850746268656716,
+          "confusion_matrix_tn_fp_fn_tp": [
+            1285,
+            2,
+            1,
+            66
+          ]
+        }
+      },
+      "rgcn_lightgbm": {
+        "validation": {
+          "samples": 1293,
+          "positive_labels": 90,
+          "pr_auc_average_precision": 0.9972445889158914,
+          "roc_auc": 0.9997875681167452,
+          "threshold": 0.5,
+          "precision": 0.946236559139785,
+          "recall": 0.9777777777777777,
+          "confusion_matrix_tn_fp_fn_tp": [
+            1198,
+            5,
+            2,
+            88
+          ]
+        },
+        "test": {
+          "samples": 1354,
+          "positive_labels": 67,
+          "pr_auc_average_precision": 0.9937268978969551,
+          "roc_auc": 0.9996752832573728,
+          "threshold": 0.5,
+          "precision": 0.9552238805970149,
+          "recall": 0.9552238805970149,
+          "confusion_matrix_tn_fp_fn_tp": [
+            1284,
+            3,
+            3,
+            64
+          ]
+        }
+      }
+    }
+  }
+}

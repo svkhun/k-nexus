@@ -1,0 +1,11 @@
+# Build inputs use the same text bytes on Windows and Render/Linux.
+.gitattributes text eol=lf
+frontend/react-app/** text=auto eol=lf
+src/app_v2.py text eol=lf
+render.yaml text eol=lf
+scripts/*.py text eol=lf
+# Published files and provenance must retain the exact bytes in release.json.
+frontend/react-app/dist/** -text
+frontend/react-app/public/evidence/application-baseline-2026-10-29/** -text
+frontend/react-app/src/data/applicationBaseline.json -text
+docs/application-baseline-2026-10-29/SOURCE_MANIFEST.json -text

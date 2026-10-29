@@ -1,4 +1,5 @@
 import React from 'react';
+import ExperimentResults from '../components/ExperimentResults';
 import { StudyIntro, StudySection, StudyNote, StudyFlow, StudyCards, StudyTable, StudySources, StudyNext, ConceptGraph, useResearch, codeSource, appSource } from '../components/ResearchUI';
 import { DEMO_PLAN, transferPlan } from '../data/demoPlan.mjs';
 import { money } from '../components/ProjectUI';
@@ -22,6 +23,7 @@ export default function TrustGraphPage() {
     <StudySection title={c.jointTitle}><p className="study-lead">{c.joint}</p></StudySection>
     <StudySection title={c.comparisonTitle}><StudyTable headers={c.comparisonHeaders} rows={numericRows.map((row, i) => [c.comparisonRows[i], ...row.map(value => '฿' + money(value, 2))])} label={c.comparisonTitle}/><p className="study-caption">{c.comparisonNote}</p></StudySection>
     <StudyNote title={c.evaluationTitle}>{c.evaluation}</StudyNote>
+    <ExperimentResults model="trustgraph"/>
     <StudySources items={[codeSource('src/train_trustgraph_two_tier.py'), appSource('src/transfer_planning.py'), appSource('docs/transfer-cooldown.md'), ['R-GCN · Schlichtkrull et al.', 'https://arxiv.org/abs/1703.06103']]}/>
     <StudyNext to="/architecture">Machine Learning & Data Science</StudyNext>
   </div>;
